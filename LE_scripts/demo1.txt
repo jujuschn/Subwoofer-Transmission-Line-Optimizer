@@ -1,0 +1,21 @@
+  Def_Driving
+    Value=1V    IsRms
+
+  Def_Driver  'Drv1'
+    dD=44mm       // Diaphragm diameter
+    Mms=0.5g    Cms=10e-6m/N    Rms=4Ns/m
+    Bl=5Tm     Re=6.7ohm   fre=50kHz       ExpoRe=1    Le=0.1mH    ExpoLe=0.618
+
+  System 'S1'
+    Driver
+      Node=1=0=10=20   Def='Drv1'
+    Enclosure  'Rear enclosure'
+      Node=20      Vb=120cm3    Qb/fo=0.1
+    Enclosure 'Compression chamber'
+      Node=10    Vb={ dD=44e-3; H=0.5e-3; SD=pi*sqr(dD/2); Vb=SD*H }
+    Waveguide  'Phase plug'
+      Node=10=300    STh=3cm2  dMo=1in  Len=22mm  Conical
+    Waveguide  'Horn-stub'
+      Node=300=400   dTh=1in  dMo=2in  Len=76.5mm  Conical
+    RadImp 'Throat'
+      Node=400  DrvGroup=1001

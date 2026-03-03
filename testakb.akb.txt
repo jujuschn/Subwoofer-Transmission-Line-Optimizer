@@ -1,0 +1,10 @@
+System 'TestSystem'
+  Driver 'Midwoofer' Def='ScanSpeak 15W'
+    Node=1=2
+  End
+  AcousticLoad 'Box'
+    Node=2
+    Area=500 cm2
+    Length=30 cm
+  End
+End
